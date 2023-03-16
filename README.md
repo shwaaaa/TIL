@@ -1,3 +1,2 @@
 ### TIL
-> $ git config --global user.name "{shwaaaa}"
-> $ git config --global user.email "{shwaa1026@naver.com}"
+TIL은 Today I Learn의 약자로 내가 오늘 공부한 것입니다.
