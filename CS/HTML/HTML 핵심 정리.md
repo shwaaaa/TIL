@@ -5,28 +5,20 @@
 
 - H1~H6 태그
 1부터 6까지의 숫자는 글자의 크기의 차이를 의미(1이 가장 큼)
-<pre>
-<code>
+```
 <h1>H1</h1>
 <h2>H2</h2>
 <h3>H3</h3>
 <h4>H4</h4>
 <h5>H5</h5>
 <h6>H6</h6>
-</code>
-</pre>
+```
 
 - p 태그
 문단을 넣을 때 사용되는 태그
 
 - input 태그
 입력창을 의미, 내용이 없기 떄문에 닫는 태그 불필요
-
-<pre>
-<code>
-<input type="text">
-</pre>
-</code>
 
 ```
 <input type="text">
@@ -37,39 +29,31 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
 
 - botton 태그
 말 그대로 버튼
-<pre>
-<code>
+```
 <botton style="width:250px; height:100px; front-size: 50px;">버튼</botton>
-</code>
-</pre>
+```
 
   html의 태그들은 style 속성으로 외형을 커스터마이징 할 수 있음
- <pre>
- <code>
+ ```
  <input type="text" style="width: 500px; height: 100px; front-sixe: 90px;">
- </code>
- </pre>
+ ```
  >디테일한 스타일링은 css파일을 따로 만들어서 작성
 
 - 버튼 두개 출력
- <pre>
- <code>
+ ```
  <input type="text" style="width: 500px; height: 100px; front-sixe: 90px;">
  <botton style="width:250px; height:100px; front-size: 50px;">버튼</botton>
  <botton style="width:250px; height:100px; front-size: 50px;">버튼2</botton>
-</code>
-</pre>
+ ```
 
  - div 태그
   여러개의 태그들을 구역으로 묶거나 나눌 떄 사용하는 태그
-  <pre>
-  <code>
+  ```
   <div>
   <botton style="width:250px; height:100px; front-size: 50px;">버튼</botton>
   <botton style="width:250px; height:100px; front-size: 50px;">버튼2</botton>
   </div>
-  </code>
-  </pre>
+  ```
 
   - br 태그
  줄 바꿈
@@ -98,8 +82,7 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
 
  - form 태그
   회원가입이나 로그인 같이 특정 정보들을 묶어서 하나의 폼으로 제출해야 할 때 사용되는 태그
-   <pre>
-   <code>
+   ```
    <form>
    <input type="text" style="front-size: 30px;">
    <input type="email" style="front-size: 30px;">
@@ -107,18 +90,14 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
    <input type="date" style="front-size: 30px;"><br/>
    <input type="checkbox" style="front-size: 30px;">체크박스</input><br/>
    </form>
-   </code>
-   </pre>
-
+   ```
   **type**은 이 입력창이 어떤 정보를 받아들일지에 대한 속성이다.
 
  - select 태그
  항목 선택을 위한 태그
  여러 선택지 중에 하나를 골라야 할 때 자주 사용됨
  select태그가 여러 개의 option 태그들을 감싸는 형태
- <pre>
- <code>
+ ```
  <select name="이름">
  <option value="값">
- </code>
- </pre>
+ ```
