@@ -21,11 +21,8 @@
 
 - input 태그
 입력창을 의미, 내용이 없기 떄문에 닫는 태그 불필요
-<pre>
-<code>
-<input type="text">
-</code>
-</pre>
+
+><input type="text">
 
 **type**라고 보이는 이 부분은 해당 태그의 속성
 type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
