@@ -2,13 +2,13 @@
 ----------------------------
 - **<!DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 <DOKTYPE html>로 명시함
 
-- **<HTML>**: HTML 문서의 시작과 끝을 표시
+- _<HTML>_: HTML 문서의 시작과 끝을 표시
 
-- **<head>**: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
+- _<head>_: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
 >- <style>,<meta>,<link>,<script>,<base> 태그 등 정의
 >- <title>: HTML 문서 제목(title) 정의
 
-- **<body>**: 내부에 웹 페이지의 실제적인 내용(content)을 작성
+- _<body>_: 내부에 웹 페이지의 실제적인 내용(content)을 작성
 >- <h1>~<h6>: 제목(heading) 정의
 >- <p>: 단락(paragraph) 정의
 
