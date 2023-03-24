@@ -1,10 +1,10 @@
 ***HTML 문서 기본 구조***
 ----------------------------
-- **<!DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 <DOKTYPE html>로 명시함
+- <!DOCYTPE>: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 <DOKTYPE html>로 명시함
 
-- _<HTML>_: HTML 문서의 시작과 끝을 표시
+- <HTML>: HTML 문서의 시작과 끝을 표시
 
-- _<head>_: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
+- <head>: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
 >- <style>,<meta>,<link>,<script>,<base> 태그 등 정의
 >- <title>: HTML 문서 제목(title) 정의
 
