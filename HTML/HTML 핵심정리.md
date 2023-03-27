@@ -1,13 +1,14 @@
 ***HTML 문서 기본 구조***
 ----------------------------
-- **<!DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 <DOKTYPE html>로 명시함
-- < HTML>: HTML 문서의 시작과 끝을 표시
+- **< !DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 < DOKTYPE html>로 명시함
 
-- < head>: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
+- **< HTML>**: HTML 문서의 시작과 끝을 표시
+
+- **< head>**: 웹 페이지 문서에 대한 정보로 메타데이터(metadata)를 정의
 >- < style>,< meta>,< link>,< script>,< base> 태그 등 정의
 >- < title>: HTML 문서 제목(title) 정의
 
-- _< body>_: 내부에 웹 페이지의 실제적인 내용(content)을 작성
+- **< body>**: 내부에 웹 페이지의 실제적인 내용(content)을 작성
 >- < h1>~< h6>: 제목(heading) 정의
 >- < p>: 단락(paragraph) 정의
 
@@ -30,6 +31,9 @@
 <h5>H5</h5>
 <h6>H6</h6>
 ```
+
+- pre 태그
+>텍스트 그대로 화면에 표시할 때 사용하는 태그
 
 - p 태그
 >문단을 넣을 때 사용되는 태그
@@ -74,6 +78,11 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
 
   - br 태그
  >줄 바꿈
+ >종료태그가 없음
+
+ - hr 태그
+ >수평선을 표시하는 태그
+ >마찬가지로 종료태그가 없음
   
   - strong 태그
  >텍스트 강조
@@ -90,6 +99,11 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
  > **ul** ul 태그 안에 li 태그를 넣고 그 안에 내용 넣기
  > **ol** ol도 사용방법 동일하지만 ol은 앞에 자동으로 넘버링이 붙음
 
+ - dl 태그
+ >정의 리스트(definitionlist)
+ ><dl>태그를 사용하여 전체 리스트 표현
+ >각 항목은 <dt> 태그를 사용하며 각 설명은 <dd>태그를 사용
+ 
  - table 태그
  >주로 표를 만들 때 사용됨
  > table 태그 안에 내용이 되는 태그들을 집어넣어야함
@@ -149,4 +163,20 @@ type=text라는 뜻은 type이라는 속성의 값이 text임을 의미
 >- 각 태그의 시작 태그와 종료 태그 쌍이 서로 교차되면 안됨
 >- 태그는 포함관계를 들여쓰기를 통해 표시하여 작성
 
-17:05
+***
+
+**텍스트 서식 태그**
+---------------------
+
+```
+<b>~</b> : 굵게(bold)
+<i>~</i> : 이텔릭(italic)
+<ins>~</ins> : 밑줄(insert)
+<del>~</del> : 가운데 선
+<mark>~</mark> : 하이라이트
+<strong>~</strong> : 중요
+<code>~</code> : 코드
+<em>~</em> : 강조(emphasized text)
+<sup>~</sup> : 위 첨자(superscript)
+<sub>~</sub> : 아래 첨자(subscript)
+```
