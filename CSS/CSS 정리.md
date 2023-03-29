@@ -216,5 +216,5 @@ span{color: rgb(70%, 10%, 20%);}
   ```
  >=>두께가 2px인 직선 모양(solid)의 초록(green) 테두리를 만들어줘!
 
-- border 속성의 하위 속성
+border 속성의 하위 속성
 ![Alt text](../../%EC%BA%A1%EC%B2%98.PNG)
