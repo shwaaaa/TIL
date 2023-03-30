@@ -1,6 +1,6 @@
 ***HTML 문서 기본 구조***
 ----------------------------
-- **< !DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 < DOKTYPE html>로 명시함
+- **< !DOCYTPE>**: 현재 문서의 HTML타입을 정의하며 HTML5의 경우 < DOCTYPE html>로 명시함
 
 - **< HTML>**: HTML 문서의 시작과 끝을 표시
 
