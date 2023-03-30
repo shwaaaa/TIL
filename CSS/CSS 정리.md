@@ -216,5 +216,12 @@ span{color: rgb(70%, 10%, 20%);}
   ```
  >=>두께가 2px인 직선 모양(solid)의 초록(green) 테두리를 만들어줘!
 
-- border 속성의 하위 속성
-<img width="494" alt="캡처" src="https://user-images.githubusercontent.com/127721819/228575514-69e93e7c-c238-4ade-b9ee-efd552c8ebb8.PNG">
+**박스 모델**
+-------------
+브라우저가 요소를 렌더링 할 때, 각각의 요소는 기본적으로 사각형 형태로 영역을 차지하게 된다. 이 영역을 '박스'라 표현하며, css는 박스의 크기, 위치, 속성(색,배경,테두리,모양 등)을 결정할 수 있다.
+
+하나의 박스는 네개의 영역으로 구성된다.
+- 콘텐츠 영역 : width, height
+- 안쪽 여백 : padding
+- 경계선(테두리) : margin
+- 바깥쪽 여백 : border-width
