@@ -126,6 +126,67 @@ p{
   }
   ```
 
+- 특성 선택자
+  >특성 선택자(속성 선택자)는 주어진 속성의 존재 여부나 그 값에 따라 요소를 선택한다.
+   1. 컨셉
+    ```
+    [class]{
+      background-color: tomato;
+    }
+    ```
+    =>클래스 속성을 가지고 있는 요소를 선택하기
+
+    ```
+    [class="item"]{
+      background-color: tomato;
+    }
+    ```
+    =>클래스가 "item"인 요소를 선택하기
+   2. 값 확인
+     기호를 추가하여 요소를 선택하는 방식을 다양화할 수 있다.
+
+    ```
+    [class *= "it"] {color: white;}
+    ```
+    => 클래스 값에 "it"가 포함되는 요소를 선택하기
+
+    ```
+    [class ^= "it"] {color: white;}
+    ```
+    => 클래스 값에 "it"로 시작하는 요소를 선택하기
+
+    ```
+    [class *= "it"] {color: white;}
+    ```
+    => 클래스 값에 "it"로는 끝나는 요소를 선택하기
+
+ - 결합 선택자
+  > 결합 선택자(결합자)는 두개 이상의 선택자를 결합시켜 결합된 조건을 만족하는 요소를 선택한다.
+    1. 자손 결합자
+     > 두개의 선택자 중 첫번째 선택자 요소의 자손을 선택할 수 있다.
+
+     ```
+     div p{color: white;}
+     ```
+     => div 요소 안에 위치하는 모든 p요소를 선택하기
+
+     ```
+     div > p{color: white;}
+     ```
+     => div 요소의 바로 아래에 위치하는 모든 p요소를 선택하기
+
+    2. 형제 결합자
+     > 두개의 선택자 중 첫번째 선택자 요소의 형제를 선택할 수 있다.
+     ```
+     h1 ~ p{color: red;}
+     ```
+     => h1 요소의 뒤에 오는 형제 중 모든 p 요소를 선택하기
+
+     ```
+     h1 + p{color: red;}
+     ```
+     => h1 요소의 바로 뒤에 오는 형제 p 요소를 선택하기
+
 - 선택자가 겹치는 경우
   >선택자가 겹치는 경우, 기본적으로 나중에 작성된 스타일이 적용된다.
   >선택자가 다르지만 요소가 겹치는 경우, 선택자 우선순위에 의해 적용될 스타일이 결정된다.
@@ -301,4 +362,18 @@ flexbox를 1차원 모델이라 부르는 이유는, 레이아웃을 다룰 때 
  >flexbox를 flex 컨테이너라고도 한다
  >flex 컨테이너를 만들기 위해서는 컨테이너에 display:flex;를 적용해야 한다.
 
- #13 4:10
+ >flexbox에는 '주축(main-axis)'과 '교차축(cross-axis)'이 있다.
+- flex box  다루기
+  >1. 주축 배치 방법 : justify-content
+   >justify-content: center
+   >justify-content: flex-start
+   >justify-content: flex-end
+   >justify-content: space-around(주축에서 요소들간의 여백을 동일하게 맞추겠다.)
+   >justify-content: space-between(첫번째 요소와 마지막 요소를 양끝에다 붙인 후 나머지 요소의 여백을 동일하게 맞춘다.)
+
+  >2. 교차축 배치 방법 : align-items
+   >justify-content와 동일
+
+  >- 교차축 개별요소 배치 방법 : align-self
+  >- 줄 바꿈 여부 : flex-wrap
+
