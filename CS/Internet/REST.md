@@ -84,7 +84,7 @@ REST API 설계 예시
  > Good Example  http://khj93.com/test
 
 3. 언더바 대신 하이폰을 사용한다.
- > Bad Example http://khj93.com/test_blog
+ > Bad Example http://khj93.com/test_blog 
  > Good Example  http://khj93.com/test-blog
 
 4. 파일확장자는 URI에 포함하지 않는다.
