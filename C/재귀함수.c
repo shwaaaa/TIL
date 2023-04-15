@@ -126,19 +126,72 @@
 
 
 //gcd함수 유클리드 호제법
-#include <stdio.h>
-int GCD(int a,int b);
+
+//반복함수
+// #include <stdio.h>
+// int main(){
+//     int a=16;
+//     int b=4;
+//     int n=a%b;
+//     do {
+//         if(n==0)
+//         printf("result=%d",b);
+//         a=b;
+//         b=n;
+//     }while(n=0);
+//     return 0;
+// }
+
+//재귀함수
+// #include <stdio.h>
+// int GCD(int a,int b);
+// int main(){
+//     int result;
+//     result = GCD(16,4);
+//     printf("result=%d\n",result);
+//     return 0;
+// }
+
+// int GCD(int a,int b){
+//     int n=a%b;
+//     if(n==0)
+//        return b;
+//     else
+//        a=b;
+//        b=n;
+//        return n;
+// }
+
+
+//피보나치
+
+//반복함수
+// #include<stdio.h>
+// int main(){
+//     int x;
+//     printf("정수 입력:");
+//     scanf("%d",&x);
+//     int sum=0;
+//     for(int i=1; i<=x; i++){
+//         sum+=i;
+//     }
+//     printf("%d번째 피보나치 항 = %d",x,sum);
+//     return 0;
+// }
+
+//재귀함수
+#include<stdio.h>
+int fibo(int a);
 int main(){
-    int result;
-    result = GCD(16,4);
-    printf("result=%d\n",result);
+    int x;
+    printf("정수 입력:");
+    scanf("%d",&x);
+    printf("%d번째 피보나치 항 = %d\n",x,fibo(x));
     return 0;
 }
-
-int GCD(int a,int b){
-    int n=a%b;
-    if(n==0)
-       return a;
+int fibo(int a){
+    if(a<=1)
+      return a;
     else
-    
+      return fibo(a-1)+fibo(a-2);
 }
