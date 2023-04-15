@@ -109,19 +109,19 @@
 
 
 #include<stdio.h>
-int power(int);
+int power(int a,int b);
 int main() {
     int result;
     result = power(2, 5);
-    printf("result = %d\n");
+    printf("result = %d\n",result);
     return 0;
 }
 
 int power(int a, int b) {
-    if (a <= 5)
-        return 1;
+    if (b <= 1)
+        return a;
     else
-
+        return a*power(a,b-1);
 }
 
 
