@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>웹 페이지의 제목</title>
+    </head>
+    <body>
+        <h1>제목</h1>
+        <p>단락</p>
+        <a href="https://www.instagram.com/2is.hwa/">insta</a>
+        <table border=""1>
+            <caption>시간표</caption>
+            <thead>
+                <tr>
+                    <th rowspan=2>교시</th>
+                    <th rowspan=5>요일</th>
+                </tr>
+                <tr>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1교시</td>
+                    <td>컴퓨터개론</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2교시</td>
+                    <td></td>
+                    <td>머신러닝</td>
+                    <td></td>
+                    <td>웹과인터넷</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3교시</td>
+                    <td></td>
+                    <td></td>
+                    <td>프로그래밍</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4교시</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <form name="frame" action="sign.jsp" method="post">
+            <lable></lable>
+            <input type="text" id="name" name="name" value="Suan" size="20">
+            <select id="food" name="food" multiple>
+                <optgroup lable="음식">
+                    <option value="pizza" selected>피자</option>
+                    <option value="hambuger" selected>햄버거</option>
+                    <option value="pasta" selected>파스타</option>
+                </optgroup>
+                <optgroup lable="후식">
+                    <option value="pizza" selected>콜라</option>
+                    <option value="hambuger" selected>커피</option>
+                    <option value="pasta" selected>아이스크림</option>
+                </optgroup>
+            </select><br />
+            <textarea name="article" rows="20", cols="30">텍스트</textarea><br />
+            <button>Button</button>
+            <fieldset>
+                <legend>개인정보</legend>
+                <lable for="name">이름: </lable><br />
+                <input type="text" id="name" name="name" value="suan"><br />
+                <lable for="affiliation">소속: </lable><br />
+                <input type="text" id="affiliation" name="affiliation" value="Suanlab"><br /><br />
+                <input type="submit" value="전송">
+            </fieldset>
+            <input list="browsers">
+            <datalist id="browsers">
+                <option value="Chrome"></option>
+                <option value="Safari"></option>
+                <option value="Internet Explorer"></option>
+            </datalist>
+        </form>
+        <form oninput="r.value=parseInt(x.value) * parseInt(y.value)">
+            <input type="number" id="x" name="x" value="10">
+            *
+            <input type="number" id="y" name="y" value="20">
+            =
+            <output name="r" for="x,y"></output>
+            <br /><br />
+            <input type="submit">
+        </form>
+        <form>
+            <input type="text" name="text" size="20" placeholder="이름">
+            <input type="password" name="password" required>
+            <input type="botton" value="Button"><br />
+            <input type="radio" name="gender" value="male">남자
+            <input type="radio" name="gender" value="female">여자<br />
+            <input type="checkbox" name="food" value="hambuger">햄버거<br />
+            <input type="checkbox" name="food" value="pizza">피자<br />
+            <input type="date" name="date" min="2020-01-01" max="2020-12-31">
+            <input type="month" id="month" name="month">
+            <input type="week" id="week" name="week">
+            <input type="time" id="time" name="time">
+            <input type="datetime-local" id="datetime" name="datetime"><br />
+            <input type="color" name="color"><br />
+            <input type="number" name="num" min="0" max="1000"><br />
+            <input type="range" name="point" min="0" max="100"><br />
+            <input type="email" name="email"><br />
+            <input type="url" name="myurl">
+            <input type="tel" id="phone" name="phone" patter="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br />
+            <input type="file" id="myself" name="myfile">
+            <input type="submit" value="전송">
+            <input type="reset" value="초기화">
+
+        </form>
+    </body>
+</html>
