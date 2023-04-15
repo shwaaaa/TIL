@@ -107,21 +107,38 @@
 // }
 
 
+//제곱
+// #include<stdio.h>
+// int power(int a,int b);
+// int main() {
+//     int result;
+//     result = power(2, 5);
+//     printf("result = %d\n",result);
+//     return 0;
+// }
 
-#include<stdio.h>
-int power(int a,int b);
-int main() {
+// int power(int a, int b) {
+//     if (b <= 1)
+//         return a;
+//     else
+//         return a*power(a,b-1);
+// }
+
+
+//gcd함수 유클리드 호제법
+#include <stdio.h>
+int GCD(int a,int b);
+int main(){
     int result;
-    result = power(2, 5);
-    printf("result = %d\n",result);
+    result = GCD(16,4);
+    printf("result=%d\n",result);
     return 0;
 }
 
-int power(int a, int b) {
-    if (b <= 1)
-        return a;
+int GCD(int a,int b){
+    int n=a%b;
+    if(n==0)
+       return a;
     else
-        return a*power(a,b-1);
+    
 }
-
-
