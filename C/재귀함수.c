@@ -166,32 +166,43 @@
 //피보나치
 
 //반복함수
-// #include<stdio.h>
-// int main(){
-//     int x;
-//     printf("정수 입력:");
-//     scanf("%d",&x);
-//     int sum=0;
-//     for(int i=1; i<=x; i++){
-//         sum+=i;
-//     }
-//     printf("%d번째 피보나치 항 = %d",x,sum);
-//     return 0;
-// }
-
-//재귀함수
 #include<stdio.h>
-int fibo(int a);
 int main(){
     int x;
     printf("정수 입력:");
     scanf("%d",&x);
-    printf("%d번째 피보나치 항 = %d\n",x,fibo(x));
+    int sum,temp=0;
+    int temp2=1;
+    if(x==0)
+    return 0;
+
+    else if(x==1)
+    return 1;
+
+    else{
+    for(int i=1; i<=x; i++){
+        sum=temp+temp2;
+        temp2=temp;
+        temp=sum;
+    }
+    }
+    printf("%d번째 피보나치 항 = %d",x,sum);
     return 0;
 }
-int fibo(int a){
-    if(a<=1)
-      return a;
-    else
-      return fibo(a-1)+fibo(a-2);
-}
+
+//재귀함수
+// #include<stdio.h>
+// int fibo(int a);
+// int main(){
+//     int x;
+//     printf("정수 입력:");
+//     scanf("%d",&x);
+//     printf("%d번째 피보나치 항 = %d\n",x,fibo(x));
+//     return 0;
+// }
+// int fibo(int a){
+//     if(a<=1)
+//       return a;
+//     else
+//       return fibo(a-1)+fibo(a-2);
+// }
