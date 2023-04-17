@@ -143,7 +143,7 @@
 // }
 
 //재귀함수
-// #include <stdio.h>
+//#include <stdio.h>
 // int GCD(int a,int b);
 // int main(){
 //     int result;
@@ -151,44 +151,48 @@
 //     printf("result=%d\n",result);
 //     return 0;
 // }
-
-// int GCD(int a,int b){
-//     int n=a%b;
-//     if(n==0)
-//        return b;
-//     else
-//        a=b;
-//        b=n;
-//        return n;
-// }
+// int GCD(int a, int b) {
+//     int n = a % b;
+//     do {
+//         if (n == 0)
+//             return b;
+//         a = b;
+//         b = n;
+//     } while (n = 0);
+//     return b;
+//}
 
 
 //피보나치
 
 //반복함수
-#include<stdio.h>
-int main(){
-    int x;
-    printf("정수 입력:");
-    scanf("%d",&x);
-    int sum,temp=0;
-    int temp2=1;
-    if(x==0)
-    return 0;
-
-    else if(x==1)
-    return 1;
-
-    else{
-    for(int i=1; i<=x; i++){
-        sum=temp+temp2;
-        temp2=temp;
-        temp=sum;
-    }
-    }
-    printf("%d번째 피보나치 항 = %d",x,sum);
-    return 0;
-}
+//#include<stdio.h>
+// int fibo(int a);
+// int main(){
+//     int x;
+//     printf("정수 입력:");
+//     scanf("%d",&x);
+//     printf("%d번째 피보나치 항 = %d\n",x,fibo(x));
+//     return 0;
+// }
+// int fibo(int a) {
+//     int sum, temp = 0;
+//         int temp2 = 1;
+//         if (a == 0)
+//             return 0;
+//
+//         else if (a == 1)
+//             return 1;
+//
+//         else {
+//             for (int i = 1; i <= a; i++) {
+//                 sum = temp + temp2;
+//                 temp2 = temp;
+//                 temp = sum;
+//             }
+//            return sum;
+//         }
+// }
 
 //재귀함수
 // #include<stdio.h>
