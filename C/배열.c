@@ -60,77 +60,93 @@
 // }
 
 
-#include <stdio.h>
-int main(){
-    int car[10]={0};
-    int x;
-    printf(">>자동차 모델을 선택하시겠습니까? (Y/N)");
-    scanf("%d",&x);
-    while(x=='N'||x=='n'){
-    printf(">>자동차 모델을 선택하시겠습니까? (Y/N)");
-    scanf("%d",&x);
-    if(x=='Y' || x=='y'){
-        int b;
-        printf("자동차 모델 번호: 1 2 3 4 5 6 7 8 9 10\n");
-        printf("자동차 모델 현황: %d %d %d %d %d %d %d %d %d %d\n",car[0],car[1],car[2],car[3],car[4],car[5],car[6],car[7],car[8],car[9]);
-        printf("자동차 모델 선택:");
-        scanf("%d",&b);
-        if(car[b]==0){
-            car[b]+=1;
-        }
-        else
-        printf("%d모델은 이미 선택된 모델입니다. 다시 입력하세요.",b);
-        continue;
-    }
-    
-    else
-    printf("알파벳 입력 오류입니다.\n 알파벳은 대소문자 구별 없이 Y 또는 N만 허용합니다.\n 알파벳을 다시 입력하세요.");
-    continue;
-    }
-    printf("자동차 모델 No.예약 완료 후 프로그램 종료");
-}
-
-
 // #include <stdio.h>
-// #define STUDENT 5
-// int SCANF (int sum);
-// float SUM(int a,int b,int c, int d, int e);
-// int CHECK(int num1,int num2);
 // int main(){
-//     int result;
-//     int score[STUDENT];
-//     SCANF(score);
+//     int car[11]={0};
+//     char x;
+//     for(;;){
+//     printf(">>자동차 모델을 선택하시겠습니까? (Y/N):");
+//     scanf(" %c",&x);
+//     int b;
 
-//     float result = (float)SUM(score)/STUDENT;
-//     printf("평균 = %.2f\n\n",result);
-
-//     int x=100;
-//     int key = CHECK(x,score);
-//     if(key ==1){
-//         printf("배열 안에 %d가 존재",x);
+//     if(x!='Y' && x!='y' && x!='N' && x!='n'){
+//         printf("알파벳 입력 오류입니다.\n 알파벳은 대소문자 구별 없이 Y 또는 N만 허용합니다.\n 알파벳을 다시 입력하세요.\n");
 //     }
-//     else{
-//         priintf("배열 안에 %d가 없음",x);
+
+//     if(x=='Y' || x=='y'){
+//         printf("자동차 모델 번호: 1 2 3 4 5 6 7 8 9 10\n");
+//         printf("자동차 모델 현황: %d %d %d %d %d %d %d %d %d %d\n",car[1],car[2],car[3],car[4],car[5],car[6],car[7],car[8],car[9],car[10]);
+//         printf("자동차 모델 선택:");
+//         scanf("%d",&b);
+//         if(car[b]==0){
+//             car[b]+=1;
+//             printf("예약 완료되었습니다.\n");
+//         }
+//         else{
+//             printf("%d모델은 이미 선택된 모델입니다. 다시 입력하세요.",b);
+//         }
+//     }
+    
+//     else if(x=='n'||x=='N'){
+//         for(int i = 1; i <= 10; i++){
+//             if(car[i] != 0){
+//                 printf("자동차 모델 No.%d 예약 완료\n", i);
+//             }
+//         }
+//         break;
+//     }
+
+    
 //     }
 //     return 0;
 // }
-// int SCANF (int sum){
-//     int a,b,c,d,e;
-//     scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
-//     int sh[5]={a,b,c,d,e};
-//     return;
-// }
 
-// float SUM(int a,int b,int c, int d, int e){
-//     int sum=0;
-//     sum=a+b+c+d+e;
-//     return sum;
-// }
 
-// int CHECK(int num1,int num2){
-//     for(int i=0; i<5; i++){
-//         int sum=0;
-//         sum=num2/num1;
-//         return sum;
-//     }
-// }
+
+#include <stdio.h>
+#define STUDENT 5
+void SCANF (int sum[]);
+float SUM(int sum[]);
+int CHECK(int num[],int num1);
+
+
+int main(){
+    int score[STUDENT];
+    SCANF(score);
+
+    float result = (float)SUM(score)/STUDENT;
+    printf("평균 = %.2f\n\n",result);
+
+    int x=100;
+    int key = CHECK(score, x);
+    if(key == 1){
+        printf("배열 안에 %d가 존재",x);
+    }
+    else{
+        printf("배열 안에 %d가 없음",x);
+    }
+    return 0;
+}
+void SCANF (int sum[]){
+    int a,b,c,d,e;
+    scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
+    sum[0] = a;
+    sum[1] = b;
+    sum[2] = c;
+    sum[3] = d;
+    sum[4] = e;
+}
+
+float SUM(int sum[]){
+    float count = sum[0] + sum[1] + sum[2] + sum[3] + sum[4];
+    return count;
+}
+
+int CHECK(int num[],int num1){
+    for(int i=0; i<5; i++){
+        if(num[i] == num1){
+            return 1;
+        }
+    }
+    return 0;
+}
