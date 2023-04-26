@@ -194,6 +194,7 @@
 //         }
 // }
 
+
 //재귀함수
 // #include<stdio.h>
 // int fibo(int a);
@@ -211,29 +212,26 @@
 //       return fibo(a-1)+fibo(a-2);
 // }
 
-
 #include <stdio.h>
-int main(){
-    int n;
-    scanf("%d",&n);
-    int i,j;
-    for(i=1; i<=n; i++){
-        for(j=1; j<=n-i; j++){
-            printf(" ");
-        }
-        for(j=1; j<=i; j++){
-            printf("*");
-        }
-        printf("\n");
+int prime(int n)
+{
+    int j = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (n % i == 0)
+            j++;
     }
-    for(i=n-1; i>0; i--){
-        for(j=1;j<=n-i;j++){
-            printf(" ");
-        }
-        for(j=1; j<=i; j++){
-            printf("*");
-        }
-        printf("\n");
-    }
+    if (j == 2)
+        printf("%d는 소수입니다.", n);
+    else
+        printf("%d는 소수가 아닙니다.", n);
+}
+
+int main()
+{
+    int a;
+    printf("정수를 입력하시오:");
+    scanf("%d", &a);
+    prime(a);
     return 0;
-}   
+}
