@@ -117,3 +117,139 @@ var capitals: [String: String] = [:]
 var languages = [String]()
 var capitals = [String: String]()
 ```
+
+***
+
+**조건문과 반복문**
+-------
+
+조건을 검사할 때에는 if, switch를 쓴다. 아래 코드는 if를 사용한 예시
+```
+var age = 19
+var student = ""
+
+if age >= 8 && age < 14 {
+  student = "초등학생"
+} else if age < 17 {
+  student = "중학생"
+} else if age < 20 {
+  student = "고등학생"
+} else {
+  student = "기타"
+}
+
+student // 고등학생
+```
+
+if문의 조건절에는 값이 정확하게 참 혹은 거짓으로 나오는 Bool 타입을 사용해야한다. 위에서 언급한 것과 같이 Swift에서는 타입 검사를 굉장히 엄격하게 하기 때문에, 다른 언어에서 사용 가능한 아래와 같은 코드를 사용하지 못한다.
+```
+var number = 0
+if !number { // 컴파일 에러!
+  // ...
+}
+```
+
+대신, 이렇게 쓴다.
+```
+if number == 0 {
+  // ...
+}
+```
+
+빈 문자열이나 배열 등을 검사할 때에도 명확하게 길이가 0인지를 검사해야 한다.
+```
+if name.isEmpty { ... }
+if languages.isEmpty { ... }
+```
+
+Swift의 switch 구문은 조금 특별하다. 패턴 매칭이 가능하기 때문! 아래 코드는 위에서 작성한 if문을 switch문으로 옮긴 것
+```
+switch age {
+case 8..<14:
+  student = "초등학생"
+case 14..<17:
+  student = "중학생"
+case 17..<20:
+  student = "고등학생"
+default:
+  student = "기타"
+}
+```
+
+8..<14와 같이 범위Range 안에 age가 포함되었는지 여부를 검사할 수 있다.
+반복되는 연산을 할 때에는 for, while을 쓴다. for 구문을 사용해서 배열과 딕셔너리를 차례로 순환할 때에는 아래와 같이 씀
+```
+for language in languages {
+  print("저는 \(language) 언어를 다룰 수 있습니다.")
+}
+
+for (country, capital) in capitals {
+  print("\(country)의 수도는 \(capital)입니다.")
+}
+```
+
+단순한 반복문을 만들고 싶다면 범위를 만들어서 반복시킬 수도 있다. 아래 예시는 1강에서 Playground를 만들고 가장 먼저 입력했던 코드
+```
+for i in 0..<100 {
+  i
+}
+```
+
+만약 i를 사용하지 않는데 단순한 반복을 하고 싶다면, i 대신 _를 사용해서 무시할 수도 있다.
+```
+for _ in 0..<10 {
+  print("Hello!")
+}
+```
+
+-키워드는 어디서나 변수 이름 대신에 사용할 수 있다.
+while은 조건문의 값이 true일 때 계속 반복된다.
+```
+var i = 0
+while i < 100 {
+  i += 1
+}
+```
+
+***
+
+**옵셔널 (Optional)**
+---------
+
+Swift가 가지고 있는 가장 큰 특징 중 하나가 바로 옵셔널(Optional)이다. 직역하면 '선택적인' 이라는 뜻이 되는데, 값이 있을 수도 있고 없을 수도 있는 것을 나타낸다.
+
+문자열의 값이 있으면 "가나다"가 될 것이다. 그럼, 값이 없다면 ""일까? 땡. ""도 엄연히 값이 있는 문자열이다. 정확히는 '값이 없다'가 아니고 '빈 값'!! 값이 없는 문자열은 바로 nil이다.
+
+정수형의 값이 있으면 123과 같은 값이 있을 것이다. 값이 없다면 0일까? 마찬가지로 0은 0이라는 숫자 '값'이다. 이 경우에도 값이 없는 정수는 nil
+
+마찬가지로, 빈 배열이나 빈 딕셔너리라고 해서 '값이 없는'것이 아니다. 다만 '비어 있을' 뿐. 배열과 딕셔너리의 경우에도 '없는 값'은 nil이다.
+
+이렇게, 값이 없는 경우를 나타낼 때에는 nil을 사용한다. 그렇다고 해서 모든 변수에 nil을 넣을 수 있는 것은 아니다. 예로, 우리가 위에서 정의한 name이라는 변수에 nil을 넣으려 하면 에러가 발생한다.
+```
+var name: String = "전수열"
+name = nil // 컴파일 에러!
+```
+
+값이 있을 수도 있고 없을 수도 있는 변수를 정의할 때에는 타입 어노테이션에 ?를 붙여야 한다. 이렇게 정의한 변수를 바로 옵셔널Optional이라고 한다. 옵셔널에 초깃값을 지정하지 않으면 기본값은 nil.
+```
+var email: String?
+print(email) // nil
+
+email = "devxoul@gmail.com"
+print(email) // Optional("devxoul@gmail.com")
+```
+
+옵셔널로 정의한 변수는 옵셔널이 아닌 변수와는 다릅니다. 예를 들어, 아래와 같은 코드는 사용할 수 없습니다.
+```
+let optionalEmail: String? = "devxoul@gmail.com"
+let requiredEmail: String = optionalEmail // 컴파일 에러!
+```
+
+requiredEmail 변수는 옵셔널이 아닌 String이기 때문에 항상 값을 가지고 있어야 한다. 반면에, optionalEmail은 옵셔널로 선언된 변수이기 때문에 실제 코드가 실행되기 전까지는 값이 있는지 없는지 알 수 없다. 따라서 Swift 컴파일러는 안전을 위해 requiredEmail에는 옵셔널로 선언된 변수를 대입할 수 없게 만들었다.
+
+옵셔널은 개념적으로 이렇게 표현할 수 있다. 어떤 값 또는 nil을 가지고 있음.
+```
+        ,-- 어떤 값 (String, Int, ...)
+Optional
+        `-- nil
+```
