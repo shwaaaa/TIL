@@ -253,3 +253,130 @@ requiredEmail 변수는 옵셔널이 아닌 String이기 때문에 항상 값을
 Optional
         `-- nil
 ```
+
+**옵셔널 바인딩 (Optional Binding)**
+그럼 옵셔널의 값을 가져오고 싶은 경우에는 어떻게 하면 될까? 이 때 사용하는 것이 바로 옵셔널 바인딩Optional Binding
+
+옵셔널 바인딩은 옵셔널의 값이 존재하는지를 검사한 뒤, 존재한다면 그 값을 다른 변수에 대입시켜준다. if let 또는 if var를 사용하는데요. 옵셔널의 값을 벗겨서 값이 있다면 if문 안으로 들어가고, 값이 nil이라면 그냥 통과하게 된다.
+
+예를 들어, 아래의 코드에서 optionalEmail에 값이 존재한다면 email이라는 변수 안에 실제 값이 저장되고, if문 내에서 그 값을 사용할 수 있다. 만약 optionalEmail이 nil이라면 if문이 실행되지 않고 넘어간다.
+```
+if let email = optionalEmail {
+  print(email) // optionalEmail의 값이 존재한다면 해당 값이 출력
+}
+// optionalEmail의 값이 존재하지 않는다면 if문을 그냥 지나친다.
+```
+
+하나의 if문에서 콤마(,)로 구분하여 여러 옵셔널을 바인딩할 수 있다. 이곳에 사용된 모든 옵셔널의 값이 존재해야 if문 안으로 진입한다.
+```
+var optionalName: String? = "전수열"
+var optionalEmail: String? = "devxoul@gmail.com"
+
+if let name = optionalName, email = optionalEmail {
+  // name과 email 값이 존재
+}
+```
+> Tip: 코드가 너무 길 경우에는, 이렇게 여러 줄에 걸쳐서 사용하는 것이 바람직하다.
+>if let name = optionalName,
+>  let email = optionalEmail {
+>  // name과 email 값이 존재
+>}
+>참고로, 두 번째 let 부터는 생략이 가능.
+
+위 코드는 아래 코드와 동일
+```
+if let name = optionalName {
+  if let email = optionalEmail {
+    // name과 email 값이 존재
+  }
+}
+```
+>Tip: 한 번의 if문에서 여러 옵셔널을 바인딩할 수 있게 된 것은 Swift 1.2 버전부터입니다. 이전 버전까지는 바로 위와 같이 여러 번으로 감싸진 옵셔널 바인딩을 사용했습니다.
+
+옵셔널을 바인딩할 때 ,를 사용해서 조건도 함께 지정할 수 있다. , 이후의 조건절은 옵셔널 바인딩이 일어난 후에 실행된다. 즉, 옵셔널이 벗겨진 값을 가지고 조건을 검사하게 된다.
+```
+var optionalAge: Int? = 22
+
+if let age = optionalAge, age >= 20 {
+  // age의 값이 존재하고, 20 이상입니다.
+}
+```
+
+위 코드는 아래 코드와 동일합니다.
+```
+if let age = optionalAge {
+  if age >= 20 {
+    // age의 값이 존재하고, 20 이상입니다.
+  }
+}
+```
+
+**옵셔널 체이닝 (Optional Chaining)**
+Swift 코드를 간결하게 만들어주는 많은 요소들이 있는데, 옵셔널 체이닝Optional Chaining을 알게되면 다른 프로그래밍 언어가 조금 불편하게 느껴지는 경우가 생긴다.
+
+옵셔널 체이닝을 이해하는 데에는 설명보다 코드를 보는 편이 훨씬 좋다. 예컨대, 옵셔널로 선언된 어떤 배열을 떠올려보자. 이 배열이 '빈 배열'인지를 검사하려면 어떻게 해야 할까? nil이 아니면서 빈 배열인지를 확인해보면 될 것이다. 이렇게
+```
+let array: [String]? = []
+var isEmptyArray = false
+
+if let array = array, array.isEmpty {
+  isEmptyArray = true
+} else {
+  isEmptyArray = false
+}
+
+isEmptyArray
+```
+
+옵셔널 체이닝을 사용하면 이 코드를 더 간결하게 쓸 수 있습니다.
+```
+let isEmptyArray = array?.isEmpty == true
+```
+
+옵셔널 체이닝은 옵셔널의 속성에 접근할 때, 옵셔널 바인딩 과정을 ? 키워드로 줄여주는 역할을 한다. 다음과 같이 3가지 경우의 수를 생각해보자.
+
+- array가 nil인 경우
+
+  >array?.isEmpty
+  >-~~~~~~
+  >여기까지 실행되고 `nil`을 반환합니다.
+- array가 빈 배열인 경우
+
+  >array?.isEmpty
+  >-~~~~~~~~~~~~~~
+  >여기까지 실행되고 `true`를 반환합니다.
+- array에 요소가 있는 경우
+
+  >array?.isEmpty
+  >-~~~~~~~~~~~~~~
+  >여기까지 실행되고 `false`를 반환합니다.
+
+array?.isEmpty의 결과로 나올 수 있는 값은 nil, true, false가 된다. isEmpty의 반환값은 Bool인데, 옵셔널 체이닝으로 인해 Bool?을 반환하도록 바뀐 것. 따라서 값이 실제로 true인지를 확인하려면, == true를 해주어야 한다.
+
+**옵셔널 벗기기**
+옵셔널을 사용할 때마다 옵셔널 바인딩을 하는 것이 가장 바람직하다. 하지만, 개발을 하다보면 분명히 값이 존재할 것임에도 불구하고 옵셔널로 사용해야 하는 경우가 종종 있는데, 이럴 때에는 옵셔널에 값이 있다고 가정하고 값에 바로 접근할 수 있도록 도와주는 키워드인 !를 붙여서 사용하면 된다.
+```
+print(optionalEmail) // Optional("devxoul@gmail.com")
+print(optionalEmail!) // devxoul@gmail.com
+```
+
+!를 사용할 때에는 주의할 점이 있는데, 옵셔널의 값이 nil인 경우에는 런타임 에러가 발생한다는 것입니다. Java의 NullPointerException과 비슷하다고 생각하시면 될 듯 합니다.
+```
+var optionalEmail: String?
+print(optionalEmail!) // 런타임 에러!
+```
+
+**암묵적으로 벗겨진 옵셔널 (Implicitly Unwrapped Optional)**
+만약, 옵셔널을 정의할 때 ? 대신 !를 붙이면 ImplicitlyUnwrappedOptional이라는 옵셔널로 정의된다. 직역하면 '암묵적으로 벗겨진 옵셔널'
+```
+var email: String! = "devxoul@gmail.com"
+print(email) // devxoul@gmail.com
+```
+
+이렇게 정의된 옵셔널은 nil을 포함할 수 있는 옵셔널이긴 한데, 접근할 때 옵셔널 바인딩이나 옵셔널을 벗기는 과정을 거치지 않고도 바로 값에 접근할 수 있다는 점에서 일반적인 옵셔널과 조금 다르다.
+
+옵셔널 벗기기와 마찬가지로, 값이 없는데 접근을 시도하면 런타임 에러가 발생한다.
+```
+var email: String!
+print(email) // 런타임 에러!
+```
