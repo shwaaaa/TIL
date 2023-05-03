@@ -103,50 +103,68 @@
 
 
 
+// #include <stdio.h>
+// #define STUDENT 5
+// void SCANF (int sum[]);
+// float SUM(int sum[]);
+// int CHECK(int num[],int num1);
+
+
+// int main(){
+//     int score[STUDENT];
+//     SCANF(score);
+
+//     float result = (float)SUM(score)/STUDENT;
+//     printf("평균 = %.2f\n\n",result);
+
+//     int x=100;
+//     int key = CHECK(score, x);
+//     if(key == 1){
+//         printf("배열 안에 %d가 존재",x);
+//     }
+//     else{
+//         printf("배열 안에 %d가 없음",x);
+//     }
+//     return 0;
+// }
+// void SCANF (int sum[]){
+//     int a,b,c,d,e;
+//     scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
+//     sum[0] = a;
+//     sum[1] = b;
+//     sum[2] = c;
+//     sum[3] = d;
+//     sum[4] = e;
+// }
+
+// float SUM(int sum[]){
+//     float count = sum[0] + sum[1] + sum[2] + sum[3] + sum[4];
+//     return count;
+// }
+
+// int CHECK(int num[],int num1){
+//     for(int i=0; i<5; i++){
+//         if(num[i] == num1){
+//             return 1;
+//         }
+//     }
+//     return 0;
+// }
+
 #include <stdio.h>
-#define STUDENT 5
-void SCANF (int sum[]);
-float SUM(int sum[]);
-int CHECK(int num[],int num1);
-
-
 int main(){
-    int score[STUDENT];
-    SCANF(score);
+    int grade[3][5]={0};
+    int sub_sum=0, sum=0;
 
-    float result = (float)SUM(score)/STUDENT;
-    printf("평균 = %.2f\n\n",result);
-
-    int x=100;
-    int key = CHECK(score, x);
-    if(key == 1){
-        printf("배열 안에 %d가 존재",x);
-    }
-    else{
-        printf("배열 안에 %d가 없음",x);
-    }
-    return 0;
-}
-void SCANF (int sum[]){
-    int a,b,c,d,e;
-    scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
-    sum[0] = a;
-    sum[1] = b;
-    sum[2] = c;
-    sum[3] = d;
-    sum[4] = e;
-}
-
-float SUM(int sum[]){
-    float count = sum[0] + sum[1] + sum[2] + sum[3] + sum[4];
-    return count;
-}
-
-int CHECK(int num[],int num1){
-    for(int i=0; i<5; i++){
-        if(num[i] == num1){
-            return 1;
+    for(int i=0; i<3; i++){
+        printf("학급 %d 성적 입력(5명):",i+1);
+        for(int j=0; j<5; j++){
+            scanf("%d",&grade[i][j]);
+            sub_sum+=grade[i][j];
         }
+        printf("학급 %d 성적 평균 : %.2f\n\n",i+1,sub_sum/5.0);
+        sum+=sub_sum;
+        sub_sum=0;
     }
-    return 0;
+    printf("\n전체 성적 평균:%.2f\n",sum/15.0);
 }
