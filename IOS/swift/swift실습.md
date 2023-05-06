@@ -6,15 +6,13 @@ let birthday = 2007
 
 "\(birthday)에 태어난 \(name)입니다"
 var language = ["swift","java","kotlin"]
-var handsomeman=[
-    "서강준":"김재균",
-    "원빈":"정상혁",
-    "박서준":"방가온",
-    "강하늘":"엄지성",
+var gsm=[
+    "1반":"김재균",
+    "2반":"정상혁",
 ]
 
 language[0]//swift
-handsomeman["서강준"]//김재균
+handsomeman["1반"]//김재균
 
 var age = 19
 var student=""
