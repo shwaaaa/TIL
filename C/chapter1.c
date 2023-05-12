@@ -96,19 +96,45 @@
 //     return 0;
 // }
 
-#include<stdio.h>
-#define user 10000
-#define price 3200
-int main(){
-    int change=user-price;
-    printf("----거스름돈 돌려주기 프로그램----\n");
-    printf("물건 값 : %d\n",price);
-    printf("사용자가 낸 돈 : %d\n\n",user);
+// #include<stdio.h>
+// #define user 10000
+// #define price 3200
+// int main(){
+//     int change=user-price;
+//     printf("----거스름돈 돌려주기 프로그램----\n");
+//     printf("물건 값 : %d\n",price);
+//     printf("사용자가 낸 돈 : %d\n\n",user);
 
-    printf("오천원권 : %d장\n",change/5000);
-    printf("천원권 : %d장\n",(change%5000)/1000);
-    printf("오백원 동전 : %d개\n",(change%6000)/500);
-    printf("백원 동전 : %d개\n",(change%6500)/100);
+//     printf("오천원권 : %d장\n",change/5000);
+//     printf("천원권 : %d장\n",(change%5000)/1000);
+//     printf("오백원 동전 : %d개\n",(change%6000)/500);
+//     printf("백원 동전 : %d개\n",(change%6500)/100);
+//     return 0;
+// }
+
+
+#include<stdio.h>
+int data[] = { 8, 5, 2, 7, 9, 3 };
+void dataPrint(int len);
+int main() {
+    int temp;
+    int len = sizeof(data) / sizeof(data[0]);
+    dataPrint(len);
+    for (int i = 0; i < len; i++) {
+        for (int k = 1; k < len; k++) {
+            if (data[k - 1] > data[k]) {
+                temp = data[k - 1];
+                data[k - 1] = data[k];
+                data[k] = temp;
+            }
+        }
+        dataPrint(len);
+    }
     return 0;
 }
-
+void dataPrint(int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%d ", data[i]);
+    }
+    printf("\n");
+}

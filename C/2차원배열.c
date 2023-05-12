@@ -174,20 +174,46 @@
 // }
 
 
-#include <stdio.h>
-int main(){
-    int grade[3][5]={0};
-    int sub_sum=0, sum=0;
+// #include <stdio.h>
+// int main(){
+//     int grade[3][5]={0};
+//     int sub_sum=0, sum=0;
 
-    for(int i=0; i<3; i++){
-        printf("학급 %d 성적 입력(5명):",i+1);
-        for(int j=0; j<5; j++){
-            scanf("%d",&grade[i][j]);
-            sub_sum+=grade[i][j];
+//     for(int i=0; i<3; i++){
+//         printf("학급 %d 성적 입력(5명):",i+1);
+//         for(int j=0; j<5; j++){
+//             scanf("%d",&grade[i][j]);
+//             sub_sum+=grade[i][j];
+//         }
+//         printf("학급 %d 성적 평균 : %.2f\n\n",i+1,sub_sum/5.0);
+//         sum+=sub_sum;
+//         sub_sum=0;
+//     }
+//     printf("\n전체 성적 평균:%.2f\n",sum/15.0);
+// }
+
+#include<stdio.h>
+int data[] = { 8, 5, 2, 7, 9, 3 };
+void dataPrint(int len);
+int main() {
+    int temp;
+    int len = sizeof(data) / sizeof(data[0]);
+    dataPrint(len);
+    for (int i = 0; i < len; i++) {
+        for (int k = 1; k < len; k++) {
+            if (data[k - 1] > data[k]) {
+                temp = data[k - 1];
+                data[k - 1] = data[k];
+                data[k] = temp;
+            }
         }
-        printf("학급 %d 성적 평균 : %.2f\n\n",i+1,sub_sum/5.0);
-        sum+=sub_sum;
-        sub_sum=0;
+        dataPrint(len);
     }
-    printf("\n전체 성적 평균:%.2f\n",sum/15.0);
+    return 0;
+}
+void dataPrint(int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%d ", data[i]);
+    }
+    printf("\n");
 }
