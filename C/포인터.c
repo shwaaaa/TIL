@@ -193,3 +193,80 @@
 //         *pb++ = *pa++;
 //     }
 // }
+
+
+// #include <stdio.h>
+// int main(){
+//     //포인터배열 : 포인터들을 배열로 만든것
+
+//     int a = 1,b = 2,c = 3,d = 4,e = 5;
+
+//     int* arr[5]; //포인터 베열 선언
+//     arr[0] = &a;
+//     arr[1] = &b;
+//     arr[2] = &c;
+//     arr[3] = &d;
+//     arr[4] = &e;
+
+//     for(int i=0; i<5; i++){
+//         printf("배열에 들어있는 값 : %d\n",*arr[i]);
+//     }
+// }
+
+
+// #include <stdio.h>
+// int main(){
+//     // char fruits[4][10] = {
+//     //     "apple",
+//     //     "blueberry",
+//     //     "orange",
+//     //     "melon"
+//     // };
+
+//     char* p[4] = {"apple", "blueberry", "orange", "melon"};
+
+//     p[0] = "APPLE";
+//     for(int i = 0; i<4; i++){
+//         printf("%s\n", p[i]);
+//     }
+// }
+
+
+// //p12 
+// #include <stdio.h>
+// #include <string.h>
+// int main(){
+//     char a[4][10] = {"you", "house", "home", "school"};
+//     char temp[10];
+    
+//     strcpy(temp,a[0]); //you
+//     int max = strlen(a[0]); //3
+
+//     for(int i=1; i<4; i++){
+//         if(max < strlen(a[i])){
+//             max = strlen(a[i]);
+//             strcpy(temp,a[i]);
+//         }
+//     } 
+
+//     printf("%s", temp);
+// }
+
+
+// //p12
+// #include <stdio.h>
+// #include <string.h>
+// int main(){
+//     char* p[4] = {"you", "house", "school", "home"};
+//     char* temp = p[0];
+
+//     int max = strlen(p[0]); 
+
+//     for(int i=1; i<4; i++){
+//         if(max < strlen(p[i])){
+//             max = strlen(p[i]);
+//             temp=p[i];
+//         }
+//     } 
+//     printf("%s", temp);
+// }
