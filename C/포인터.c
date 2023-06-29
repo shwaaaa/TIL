@@ -177,22 +177,22 @@
 // }
 
 
-// p.11 21-3번
-#include <stdio.h>
-void Stringcopy(char* pa, char* pb);
-int main() {
-    char a[20] = "I LOVE YOU";
-    char b[20];
-    Stringcopy(a, b);
-    printf("a 배열 : %s\n", a);
-    printf("b 배열 : %s\n", b);
-}
+// // p.11 21-3번
+// #include <stdio.h>
+// void Stringcopy(char* pa, char* pb);
+// int main() {
+//     char a[20] = "I LOVE YOU";
+//     char b[20];
+//     Stringcopy(a, b);
+//     printf("a 배열 : %s\n", a);
+//     printf("b 배열 : %s\n", b);
+// }
 
-void Stringcopy(char* pa, char* pb){
-    while(*pa != '\0'){
-        *pb++ = *pa++;
-    }
-}
+// void Stringcopy(char* pa, char* pb){
+//     while(*pa != '\0'){
+//         *pb++ = *pa++;
+//     }
+
 
 
 // #include <stdio.h>

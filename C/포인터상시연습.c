@@ -120,17 +120,22 @@
 // }
 
 
-int main(){
-    char* p[4]= {"you", "house", "home", "school"};
-    char *temp = p[0];
+// int main(){
+//     char* p[4]= {"you", "house", "home", "school"};
+//     char *temp = p[0];
 
-    int max = strlen(p[0]);
+//     int max = strlen(p[0]);
 
-    for(int i =1; i<4; i++){
-        if(max<strlen(p[i])){
-            max = strlen(p[i]);
-            temp = p[i];
-        }
-    }
-    printf("%s", temp);
-}
+//     for(int i =1; i<4; i++){
+//         if(max<strlen(p[i])){
+//             max = strlen(p[i]);
+//             temp = p[i];
+//         }
+//     }
+//     printf("%s", temp);
+// }
+
+
+주소 10 값 100 value 0
+주소 10 값 100 value 101
+주소 10 값 100 value 200
