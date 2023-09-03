@@ -27,3 +27,16 @@ else {
 func example() { }
 // 만약 배포 타겟이 17 미만이라면 컴파일 시 에러
 ```
+
+- 플랫폼 여러개도 가능!
+```swift
+@available(iOS 10.0, macOS 10.12, *)
+func setupDoneButton() { } 
+```
+
+***
+
+## @available과 #available의 차이점
+- `@available`은 클래스나 메소드의 가용성을 표시하는 데 사용됩니다.
+
+- `#available`은 특정 플랫폼 또는 버전에 대한 코드를 실행하는 데만 사용됩니다.
