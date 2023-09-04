@@ -11,6 +11,7 @@
 
 - `#available`은 조건문과 같이 사용할 때 사용된다!
 - 즉, Bool 타입을 반환시켜주니 꼭 조건문과 같이 사용된다.
+- *는 필수로 적어줘야한다.
 ```swift
 if #available(iOS 17, *) {
   // 17 이상 버전 코드
@@ -40,3 +41,14 @@ func setupDoneButton() { }
 - `@available`은 클래스나 메소드의 가용성을 표시하는 데 사용됩니다.
 
 - `#available`은 특정 플랫폼 또는 버전에 대한 코드를 실행하는 데만 사용됩니다.
+
+***
+
+## unavailable
+- 지정된 플랫폼에서 사용할 수 없음을 나타낸다.
+
+- 이렇게 선언하면 애플 모든 플랫폼과 버전에서 해당 shwaa 메서드를 사용할 수 없다
+```swift
+@available(*, unavailable)
+func shwaa() { }
+```
