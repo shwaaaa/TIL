@@ -68,4 +68,4 @@ struct ContentView: View {
   }
 }
 ```
-- `LazyVGrid`와 사용방법 동일
+- `LazyVGrid`와 사용방법 동일 
