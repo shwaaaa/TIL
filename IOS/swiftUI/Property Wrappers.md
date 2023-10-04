@@ -12,7 +12,6 @@
 > - `ObservedObject`, `@EnvironmentObject`: 객체의 변경을 감시하고 그 변화에 반응하는 데 사용
 > - `@FetchRequest`: CoreData에서 데이터를 검색하는 데 사용
 
-
 ***
 
 ## 프로퍼티 래퍼를 사용하는 이유는?
@@ -20,7 +19,6 @@
 - 프로퍼티 래퍼를 통해 다양한 동작을 캡슐화하고 코드를 간결하게 유지하는데 도움이 된다.
 
 - 다양한 데이터 흐름 패턴을 쉽게 구현할 수 있다.
-
 
 ***
 
@@ -67,6 +65,8 @@ struct ContentView: View {
 - `@State`같은 경우에는 특정 view에서만 사용하는 프로퍼티였다면 `@ObservedObject`는 더 복잡한 프로퍼티(여러 프로퍼티나 메소드가 있거나, 여러 view에서 공유할 수 있는 커스텀 타입이 있는 경우) 대신 @ObservedObject를 사용한다.
 
 - `Observed Object`가 데이터가 변경되었음을 view에 알리는 방법은 여러가지가 있지만 가장 쉬운 방법은 `@Published` 프로퍼티 래퍼를 사용하는 것이다.
+
+***
 
 ## environmentobject observedobject 차이점
 
