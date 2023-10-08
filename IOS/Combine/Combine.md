@@ -20,7 +20,7 @@ Combine 프레임워크는 시간 경과에 따라 변경되는 값을 내보내
 
 ## Combine의 구성 요소
 - Publisher
-> - Publisher는 하나 혹은 여러 개의 Subscriber 객체에 시간이 흐름에 따라 값을 내보낼 수 있는 타입을 선언하기 위한 프로토콜
+> - Publisher는 하나 혹은 여러 개의 Subscriber 객체에 시간의 흐름에 따라 값을 내보낼 수 있는 타입을 선언하기 위한 프로토콜
 > - Output, Failure 타입이 제네릭으로 구현
 
 - Subscriber
