@@ -46,5 +46,22 @@ NavigationView {
 
 ## NavigationStack
 
-그치만 흔히 알고 쓰던 `NavigationView`가 사라지고 `NavigationStack`이 생겼다
+`NavigationStack`은 iOS 16+ 부터 사용할 수 있기 때문에, 앱의 `Deployment Targe`t이 16+ 이상인경우에만 진행하는게 좋다
 
+기존 `NavigationView`를 사용할때는
+```swift
+NavigationView { 
+    /* content */
+}
+.navigationViewStyle(.stack)
+```
+
+이런식으로 `NavigationViewStyle`을 `stack`으로 주었지만 `NavigationStack`을 사용한다면 
+
+```swift
+NavigationStack {
+    /* content */
+}
+```
+
+이렇게만 사용하면 된다
