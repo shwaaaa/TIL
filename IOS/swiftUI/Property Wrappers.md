@@ -6,11 +6,11 @@
 
 - 프로퍼티 래퍼를 사용하면 복잡한 로직을 래퍼 내부에 숨기고, 코드의 가독성을 향상시키며, 일관된 방식으로 특정 기능을 제공할 수 있다. 
 
-- `@State`, `@Binding`, `@ObservedObject`, `@EnvironmentObject`, `@FetchRequest` 등이 있다. 
+- `@State`, `@Binding`, `@ObservedObject`, `@EnvironmentObject`, `@StateObject` 등이 있다. 
 > - `@State`: 뷰의 상태를 저장하는데 사용, 값을 변경할 때마다 뷰가 다시 렌더링
 > - `@Binding`: 부모 뷰에서 자식 뷰로 값을 전달하고, 자식 뷰에서 부모 뷰로 값을 다시 전달하는 데 사용
 > - `@ObservedObject`, `@EnvironmentObject`: 객체의 변경을 감시하고 그 변화에 반응하는 데 사용
-> - `@FetchRequest`: CoreData에서 데이터를 검색하는 데 사용
+> - `@StateObject` : 뷰의 수명주기에 연결된 상태를 관리하며, 뷰가 재사용될 때 이전 상태를 유지
 
 ***
 
@@ -90,6 +90,18 @@ Binding을 사용하면 여러 뷰 간에 데이터를 전달하고 업데이트
 `@State`같은 경우에는 특정 view에서만 사용하는 프로퍼티였다면 `@ObservedObject`는 더 복잡한 프로퍼티(여러 프로퍼티나 메소드가 있거나, 여러 view에서 공유할 수 있는 커스텀 타입이 있는 경우) 대신 @ObservedObject를 사용한다.
 
 `Observed Object`가 데이터가 변경되었음을 view에 알리는 방법은 여러가지가 있지만 가장 쉬운 방법은 `@Published` 프로퍼티 래퍼를 사용하는 것이다.
+
+***
+
+## @StateObject
+
+`StateObject`는 뷰의 상태를 관리하는 데에 쓰인다.
+
+`StateObject` 속성으로 선언된 객체는 뷰의 수명주기와 연결되어, 뷰가 생성될 때 객체가 생성되고, 뷰가 소멸될 때 객체도 함께 소멸된다.
+
+보통 `StateObject`는 뷰의 프로퍼티로 선언되어 사용되며, SwiftUI는 해당 객체가 변경될 때마다 뷰를 자동으로 다시 그리게 된다.
+
+이는 객체가 `ObservableObject` 프로토콜을 따르고 그 안에 `@Published` 속성을 사용하여 변경 사항을 알린다는 가정하에 이뤄진다
 
 ***
 
