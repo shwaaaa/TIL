@@ -70,3 +70,63 @@ class ViewModel {
     }
 }
 ```
+
+***
+
+## 주의사항
+
+`@escaping` 키워드가 붙은 파라미터에 `non-escaping` 클로저를 전달할 수 있지만
+
+`@escaping` 키워드가 붙지 않은 파라미터에 `escaping` 클로저를 전달할 수는 없다.
+
+***
+
+## 그렇다면 언제 사용할까?
+
+### 비동기 작업에서 사용
+
+주로 비동기 작업에서 사용
+
+비동기 함수는 클로저를 인자로 받아 작업을 완료했을 때 클로저를 호출하는데, 이때 클로저가 함수를 벗어날 수 있다.
+```swift
+func fetchData(completion: @escaping (Result<Data, Error>) -> Void) {
+    // 비동기 작업 후
+    // completion 클로저를 호출
+    DispatchQueue.main.async {
+        completion(.success(data))
+    }
+}
+```
+
+### 콜백으로 사용할 때
+
+API 요청이나 데이터베이스 쿼리와 같이 완료 콜백이나 처리 클로저를 사용할 때, 해당 클로저가 함수 완료 후 호출될 가능성이 있다.
+```swift
+func performNetworkRequest(completion: @escaping (Result<String, Error>) -> Void) {
+    // 네트워크 요청 후
+    // completion 클로저를 호출
+    completion(.success(response))
+}
+```
+
+### Delegate 패턴에서
+
+delegate 패턴을 사용할 때, 즉 다른 객체에게 특정 이벤트가 발생했음을 알리기 위해 클로저를 사용할 때, 해당 클로저가 함수를 벗어날 수 있다.
+```swift
+protocol SomeDelegate: AnyObject {
+    func didReceiveData(data: String)
+}
+
+class DataManager {
+    weak var delegate: SomeDelegate?
+
+    func fetchData() {
+        // 데이터를 가져온 후
+        delegate?.didReceiveData(data: result)
+    }
+}
+```
+
+`@escaping` 키워드는 기본적으로 `Swift`에서는 클로저가 함수의 스코프 내에서 완료되는 것으로 기대되기 때문에 명시적으로 `@escaping`을 사용하여 클로저가 함수의 범위를 벗어날 수 있음을 나타낸다
+
+이는 메모리 관리나 비동기 작업 등에서 중요한 역할을 한다.
