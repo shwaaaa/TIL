@@ -1,4 +1,6 @@
-# HTTP란?
+# HTTP
+
+## HTTP란?
 
 **HTTP**는 `HyperText Transfer Protocol`의 줄임말로 텍스트 기반의 통신 규약으로 인터넷에서 데이터를 주고받을 수 있는 프로토콜이다.
 
@@ -49,8 +51,6 @@
 - DELETE : 자료의 삭제를 요청할 때 사용
 > - 서버의 데이터를 삭제
 > - 일반적으로 Request body가 아닌 URI 경로에 제거하려는 리소스의 ID를 전달한다.
-
-
 
 ***
 
