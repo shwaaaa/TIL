@@ -1,7 +1,7 @@
 # Generic
 
 ## generic이란?
-- 제네릭 코드는 유연하게 작성할 수 있고, 재사용가능한 함수와 타입이 어떤 타입과 작업할 수 있도록 요구사항을 정의한다
+- `Generic`을 사용하면 좀 더 유연하게 Funtion 및 Type을 작성할 수 있다.
 
 - 제네릭을 사용하면 중복을 피하고, 의도를 명확하게 표현하고, 추상적인 방법으로 코드를 작성할 수 있다.
 
@@ -17,7 +17,7 @@ func genericFunction (_a: Int, _b: Int) {
 ```
 이렇게 파라미터 타입은 Int이다.
 
-그렇기때문에 여기서 파라미터 타입이 Double, String일 경우엔 사용할 수 없다!
+그렇기때문에 여기서 파라미터 타입이 Double, String일 경우엔 사용할 수 없다.
 
 만약 Double, String 값도 받고싶을 때 `제네릭`을 쓸 수 있다!!!
 
@@ -59,4 +59,36 @@ struct Stack<T> {
 let stack1: Stack<Int> = .init()
 let stack2 = Stack<Int>.init()
 ```
+
+***
+
+## 제네릭 타입을 이용한 예시
+
+```swift
+func replaceNilValues<T>(from array: [T?], with element: T) -> [T] {
+  array.compactMap {
+    $0 == nil ? element : $0
+  }
+}
+```
+
+()는 함수의 매개 변수를 둘러싸고있고, <>는 함수의 타입 매개변수를 둘러싸고 있다.
+
+여기에는 T라고 불리는 하나의 타입 매개변수가 사용되었다.
+
+이 T는 특별한 의미를 지니고 있는것은 아니며 사용자에 의해 다른 이름으로 얼마든지 지어질 수 있으며,
+
+제네릭 타입을 사용한 함수를 호출하게될 경우, 스위프트는 T를 구체타입으로 대체한다.
+
+```swift
+let numbers: [Int?] = [32, 3, 24, nil, 4]
+let filledNumbers = replaceNilValues(from: numbers, with: 0)
+print(filledNumbers) // [32, 3, 24, 0, 4]
+```
+
+앞서 함수를 정의할 때, T?의 배열과 T를 매개변수 타입으로 지정해주었다.
+
+제네릭을 이용하여 정의한 함수를 numbers에서 호출하면 스위프트는 numbers에 [Int?]의 유형이 사용된다는 것을 캐치하고 T를 Int로 교체해야 한다는 것을 똑똑하게 알아낼 수 있다.
+
+이렇게 하면 여러 타입에 대한 단일 함수를 만들 수 있게되어 굳이 타입별로 여러 함수를 만들 필요가 없어진다.
 
