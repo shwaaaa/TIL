@@ -36,7 +36,6 @@ strong1 = nil
 strong2 = nil
 ```
 
-
 이 코드에서 잘 살펴보아야 할 것은 두개의 객체 변수는 마지막에 `nil`을 넣어 메모리 해제가 되었지만 각각의 객체는 강한 참조가 되었기 때문에 메모리 해제가 되지 못한다는 점이다.
 
 즉 객체인 strong은 nil을 넣어주지 못하고 객체 변수의 메모리를 해제하였다는 점이다.
@@ -105,13 +104,12 @@ unowned는 미소유 참조로 객체를 참조하고 reference count는 변화�
 
 ## Weak vs unowned
 
-참조 객체의 메모리 해제시
+`weak` 와 `unowned` 의 차이점은 참조하는 인스턴스가 메모리에서 할당 해제될 경우에 볼 수 있다.
 
-- 약한 참조 (weak) : 참조 값은 nil
-- 미소유 참조 (unowned) : 참조 값은 유지
+- weak로 선언된 변수는 nil이 됨
+- unowned로 선언된 변수는 nil 이 되지 않고 dangling pointer가 됨
 
-***
+그렇기 때문에 Swift 공식문서에서는 이렇게 나와있다
 
-- strong : reference count를 증가시켜 ARC로 인한 메모리 해제를 피하고, 객체를 안전하게 사용하고자 할 때 사용.
-- weak : 순환 참조에 의해 메모리 누수 문제를 막기 위해 사용.
-- unowned : 객체의 life cycle이 명확하고 개발자에 의해 제어 가능이 명확한 경우, weak Optional타입 대신하여 사용.
+- 참조하는 인스턴스가 더 짧은 lifetime 을 가질때 사용
+- 참조하는 인스턴스가 같거나 더 긴 lifetime 을 가질때 사용
