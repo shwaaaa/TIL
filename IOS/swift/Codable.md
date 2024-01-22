@@ -35,6 +35,14 @@ struct codableDemo : Codable {
 
 ***
 
+## Encodable
+
+원하는 형태로 바꾸어줌 (f(x) 함수와 같다) 
+
+-> 자기 자신을 외부 표현으로 encode 할 수 있는 타입
+
+***
+
 ## Encode
 
 다음과 같이 JSONEncoder를 통해 JSON 데이터로 쉽게 encode 할 수 있게 된다.
@@ -51,6 +59,16 @@ do {
 
 ***
 
+## Decodable
+
+그 형태를 해석해줌(f-1(x) 역함수와 같다)
+
+자기 자신을 외부 표현으로 `decode` 할 수 있는 타입
+
+참고로 `Decodable`을 채택하는 데이터는 `init함수`를 필수적으로 가져야 한다
+
+***
+
 ## Decode
 
 - 다음과 같이 JSONDecoder를 통해 JSON 데이터를 쉽게 decode 할 수도 있다.
@@ -59,4 +77,55 @@ do {
 ```swift
 let decoder = JSONDecoder()
 let secondUser = try decoder.decode(User.self, from: data)
+```
+
+***
+
+## CodingKey
+
+`codingKey`란?
+
+만약 우리의 User 데이터가
+```swift
+struct User: Codable {
+    var userName: String
+    var userEmail: String
+}
+```
+
+jsonData 형태
+```swift
+{
+"user_name" : "shwaaaa",
+"user_email": "qwer@gmail.com"
+}
+```
+으로 되어있을때
+
+이 jsonData를 User 데이터 타입으로 decode하게 될시 key 값의 이름이 같지 않기 때문에 에러가 나게된다.
+
+이를 위해 codingKey라는 protocol이 존재한다.
+
+codingKey는 인코딩 및 디코딩을 위한 키로 사용할 수 있는 타입으로 
+
+enum을 사용해 codingKey 프로토콜을 채택하게 하는것이다
+
+따라서 우리가 기존에 세웠던 User struct는
+
+```swift
+struct User: Codable {
+	var userName: String
+	var userEmail: String
+}
+
+//codingKey 추가
+struct User: Codable {
+	var userName: String
+	var userEmail: String
+
+	enum CodingKeys: String, CodingKey {
+	    case userName = "user_name"
+	    case userEmail = "user_email"
+	}
+}
 ```
