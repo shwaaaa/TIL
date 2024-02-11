@@ -81,6 +81,50 @@ let secondUser = try decoder.decode(User.self, from: data)
 
 ***
 
+## NSCoding
+
+다이나믹하게 다형성으로 동작하는 방식이 필요한 경우에는 `NSCoding` 프로토콜을 사용하는 것이 권장된다.
+
+`Codable`과 동시에 채택도 가능하다
+
+`required init`과 `encode` 메서드 구현이 필요하다.
+
+***
+
+## NSKeyedArchiver
+
+`NSCoding` 프로토콜을 채택한 객체는 `NSKeyedArchiver`로 인코딩, `NSKeyedUnarchiver`로 디코딩한다.
+
+아카이브 한 결과는 Data 타입이 되고, json 형식은 불가능하다.
+
+json 형식으로 데이터를 전송하려면 UserDefault or Plist 파일을 이용해서 저장하는 방법이 있다
+
+```swift
+static func unarchive(with text: Data) -> Any? {
+        do {
+            let object = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(text)
+            return object
+        }
+        catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    static func archive<T>(with things: T) -> Data {
+        do {
+            let archived = try NSKeyedArchiver.archivedData(withRootObject: things, requiringSecureCoding: false)
+            return archived
+        }
+        catch {
+            print(error)
+        }
+        return Data()
+    }
+```
+
+***
+
 ## CodingKey
 
 `codingKey`란?
