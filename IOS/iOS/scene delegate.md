@@ -1,44 +1,40 @@
 # scene delegate
 
-## iOS 13부터는 왜 AppDelegate가 아니라 SceneDelegate를 쓰는 걸까?
+## scene delegate
 
-iOS 13 이상부터는 앱 UI의 카피를 여러 개 만들고 앱 스위처에서 변환해서 사용하는 게 가능하다.
+화면에 표시되는 내용(Windows 또는 Scenes)들을 처리하고 앱이 표시되는 방식을 관리한다
 
-이게 아마 13 미만 버전과의 가장 큰 차이일 텐데, 앱 하나에 하나의 창이 있는 게 아니라 두 개 이상의 창을 쓸 수 있다. 
+- Scene Session은 앱에서 생성한 모든 scene의 정보를 관리함
+```swift
+optional func scene(_ scene: UIScene,
+      willConnectTo session: UISceneSession,
+            options connectionOptions: UIScene.ConnectionOptions)
+```
 
-앱의 상태 변화(foreground/background에 들어가는 등)에 따라 적절한 행위를 하도록 조치해야 하는데, `UIKit`은 앱 상태 변화가 일어날 때마다 적절한 `delegate` 메소드를 호출한다.
+- UISceneSession 에서 호출되는 첫번째 메소드
+- 새 UIWindow 를 만들고 루트 뷰 컨트롤러를 설정
+```swift
+optional func sceneWillEnterForeground(_ scene: UIScene)
+```
 
-***
+- Scene 이 시작되려고 할 때 호출된다
+```swift
+optional func sceneDidBecomeActive(_ scene: UIScene)
+```
 
-## 앱의 라이프 사이클 관리하기
+- WillEnterForeground 메서드 바로 다음에 호출
+- scene이 설정, 표시되고 사용할 준비를 마친다
+```swift
+ptional func sceneWillResignActive(_ scene: UIScene)
+optional func sceneDidEnterBackground(_ scene: UIScene)
+```
 
-iOS 12 이하에서는 라이프 사이클 이벤트에 반응하는 `UIApplicationDelegate` 객체를 사용하고, iOS 13 이상에서는 scene 베이스 앱에서 `UISceneDelegate` 객체를 사용한다.
+- 앱이 백그라운드로 스테이징 될 때 호출
+```swift
+optional func sceneDidDisconnect(_ scene: UIScene)
+```
 
-앱에서 **scene을 지원한다면 iOS 13 이상에서는 항상 `sceneDelegate`를 사용**하고, 그 이하에서는 `appDelegate`를 사용하게 된다.
-
-`scene`은 기기에서 동작하는 앱의 UI 중 한 객체를 나타낸다.
-
-사용자는 앱마다 여러 `scene`을 생성할 수 있고, 보이고 숨기고 하는 것을 각각 처리할 수 있다.
-
-앱이 아니라 `scene`마다 고유 라이프 사이클이 있기 때문에 각자가 다른 상태에 놓일 수 있는 것이다. 
-
-예를 들면, 다른 scene은 background거나 suspended일 때 다른 한 scene은 foreground에 있을 수 있다. 
-
-Scene 베이스 앱에서는 다음과 같은 작업을 한다.
-- UIKit이 앱에 scene을 연결할 때, scene의 최초 UI와 scene에 필요한 데이터를 로드한다.
-- 포어그라운드 활성화 상태로 변할 때, UI를 설정하고 사용자와 상호작용할 수 있도록 준비한다.
-- 포어그라운드 활성화 상태를 뜰 때, 데이터를 저장한다.
-- 백그라운드 상태로 들어갈 때, 중요한 작업은 끝내고 최대한 많은 메모리를 풀어놓고 앱 스냅샷을 준비한다.
-- scene 연결이 끊어질 때, scene과 연관된 공유 자원들을 정리한다.
-- scene 관련 이벤트에 덧붙여, `UIApplicationDelegate` 객체를 사용해 앱 구동에 대응을 해야 한다
-
-iOS 12와 그 이전 버전은 scene을 지원하지 않는다.
-
-UIKit은 `UIApplicationDelegate` 객체에 라이프 사이클 이벤트를 전부 전달한다.
-
-App 베이스 앱에서는 다음과 같은 작업을 한다.
-- 구동할 때 UI와 앱의 데이터 구조를 초기화한다.
-- 앱이 활성화될 때, UI 설정을 마치고 사용자와 상호작용할 준비를 한다.
-- 앱이 비활성화될 때, 데이터를 저장한다.
-- 백그라운드 상태로 들어갈 때, 중요한 작업은 끝내고 최대한 많은 메모리를 풀어놓고 앱 스냅샷을 준비한다.
-- 앱이 종료될 때, 모든 작업을 즉시 중단하고 공유 자원들을 풀어놓는다. (applicationWillTerminate(_:))
+- Scene 이 백그라운드로 갈 때 마다 iOS 는 리소스를 확보하기 위해 Scene을 삭제하는 것을 결정할 수 있음
+- 앱이 종료되거나 실행되지 않음을 의미하지는 않지만 scene만 세션에서 연결 해제되고 활성화되지 않는다
+- iOS는 사용자가 특정 scene을 다시 foreground로 가져올 때 이 scene을 scene 세션에 다시 연결하도록 결정할 수 있다
+- 이 방법은 더 이상 사용되지 않는 리소스를 삭제하는 데 사용할 수 있다.
